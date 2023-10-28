@@ -12,12 +12,18 @@ struct Film{
     QColor color;
 };
 
-class CsvReader{
-        public:
-        CsvReader(const std::string& filename);
-        bool isOpen();
+class AbstractClass{
+public:
+    virtual bool  isOpen() = 0;
+    virtual std::vector<Film> readAll() = 0;
+};
 
-        std::vector<Film> readAll();
+class CsvReader : public AbstractClass{
+public:
+        CsvReader(const std::string& filename);
+
+        bool isOpen() override ;
+        std::vector<Film> readAll() override ;
         int getMaxId(const std::vector<Film>& film);
 
 private:
