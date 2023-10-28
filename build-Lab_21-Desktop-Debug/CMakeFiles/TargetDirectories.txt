@@ -1,0 +1,5 @@
+C:/QtCreator/projekts/build-Lab_21-Desktop-Debug/CMakeFiles/Lab_21.dir
+C:/QtCreator/projekts/build-Lab_21-Desktop-Debug/CMakeFiles/edit_cache.dir
+C:/QtCreator/projekts/build-Lab_21-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+C:/QtCreator/projekts/build-Lab_21-Desktop-Debug/CMakeFiles/Lab_21_autogen_timestamp_deps.dir
+C:/QtCreator/projekts/build-Lab_21-Desktop-Debug/CMakeFiles/Lab_21_autogen.dir
