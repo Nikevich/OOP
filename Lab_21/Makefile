@@ -291,6 +291,7 @@ Makefile: untitled3.pro ../../mkspecs/win32-g++/qmake.conf ../../mkspecs/feature
 		../../mkspecs/features/qt_config.prf \
 		../../mkspecs/win32-g++/qmake.conf \
 		../../mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../mkspecs/features/exclusive_builds.prf \
 		../../mkspecs/features/toolchain.prf \
 		../../mkspecs/features/default_pre.prf \
@@ -320,7 +321,6 @@ Makefile: untitled3.pro ../../mkspecs/win32-g++/qmake.conf ../../mkspecs/feature
 		../../lib/Qt6Gui.prl \
 		../../lib/Qt6Core.prl \
 		../../lib/Qt6EntryPoint.prl \
-		.qmake.stash \
 		../../mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile untitled3.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 ../../mkspecs/features/spec_pre.prf:
@@ -544,6 +544,7 @@ Makefile: untitled3.pro ../../mkspecs/win32-g++/qmake.conf ../../mkspecs/feature
 ../../mkspecs/features/qt_config.prf:
 ../../mkspecs/win32-g++/qmake.conf:
 ../../mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../mkspecs/features/exclusive_builds.prf:
 ../../mkspecs/features/toolchain.prf:
 ../../mkspecs/features/default_pre.prf:
@@ -573,7 +574,6 @@ untitled3.pro:
 ../../lib/Qt6Gui.prl:
 ../../lib/Qt6Core.prl:
 ../../lib/Qt6EntryPoint.prl:
-.qmake.stash:
 ../../mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile untitled3.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

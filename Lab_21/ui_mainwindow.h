@@ -32,6 +32,7 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton_2;
+    QPushButton *pushButton_6;
     QLabel *label_6;
     QLineEdit *lineEdit_6;
     QLabel *label_7;
@@ -39,6 +40,7 @@ public:
     QLabel *label_8;
     QLineEdit *lineEdit;
     QPushButton *pushButton;
+    QPushButton *pushButton_7;
     CustomTextBrowser *textBrowser;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButton_3;
@@ -59,7 +61,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->resize(887, 581);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
@@ -70,6 +72,11 @@ public:
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
 
         horizontalLayout->addWidget(pushButton_2);
+
+        pushButton_6 = new QPushButton(centralwidget);
+        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+
+        horizontalLayout->addWidget(pushButton_6);
 
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName(QString::fromUtf8("label_6"));
@@ -105,6 +112,11 @@ public:
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
 
         horizontalLayout->addWidget(pushButton);
+
+        pushButton_7 = new QPushButton(centralwidget);
+        pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+
+        horizontalLayout->addWidget(pushButton_7);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -182,7 +194,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 18));
+        menubar->setGeometry(QRect(0, 0, 887, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -197,10 +209,12 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Add File", nullptr));
+        pushButton_6->setText(QCoreApplication::translate("MainWindow", "Add Json", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "Name:", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "Genre:", nullptr));
         label_8->setText(QCoreApplication::translate("MainWindow", "Year", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Search", nullptr));
+        pushButton_7->setText(QCoreApplication::translate("MainWindow", "Lab 8", nullptr));
         pushButton_3->setText(QCoreApplication::translate("MainWindow", "Save File", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Name:", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Genre:", nullptr));

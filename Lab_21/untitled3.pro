@@ -19,15 +19,20 @@ SOURCES += \
     csvreader.cpp \
     csvwriter.cpp \
     customtextbrowser.cpp \
+    jsonreader.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    ../../../Users/Никита/Downloads/json.hpp \
     CsvReader.h \
     CsvWriter.h \
     CustomTextBrowser.h \
+    FilmClass.h \
+    JsonReader.h \
     csvreader.h \
     csvwriter.h \
+    json.hpp \
     mainwindow.h
 
 FORMS += \

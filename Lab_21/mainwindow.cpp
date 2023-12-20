@@ -9,7 +9,12 @@
 #include <QTextBrowser>
 #include <QFileDialog>
 #include "CsvReader.h"
+#include "JsonReader.h"
 #include "CsvWriter.h"
+#include "mainwindow.h"
+
+
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -37,41 +42,134 @@ void MainWindow::on_pushButton_clicked() // Кнопка Search
     QString search2 = ui->lineEdit_5->text();
     QString search3 = ui->lineEdit_6->text();
     ui->textBrowser->clear();
+
+    Film searchFilm;
+        searchFilm.name = search3.toStdString();
+        searchFilm.genre = search2.toStdString();
+        searchFilm.year = search1.toInt();
+
     for (const Film& film : mainVectorFilm) {
-        bool match = true;
+//        bool match = true;
 
 
-        if (!search3.isEmpty() && QString::fromStdString(film.name) != search3) {
-            match = false;
-        }
-
-        if (!search2.isEmpty() && QString::fromStdString(film.genre) != search2) {
-            match = false;
-        }
-
-        if (!search1.isEmpty()) {
-            int year = QString::number(film.year).toInt();
-            int searchYear = search1.toInt();
-            if (year > searchYear) {
-                match = false;
-            }
-        }
 
 
-        if (match) {
-            filterVectorFilm.push_back(film);
+
+//        if (!search3.isEmpty() && QString::fromStdString(film.name) != search3) {
+//            match = false;
+//        }
+
+//        if (!search2.isEmpty() && QString::fromStdString(film.genre) != search2) {
+//            match = false;
+//        }
+
+//        if (!search1.isEmpty()) {
+//            int year = QString::number(film.year).toInt();
+//            int searchYear = search1.toInt();
+//            if (year > searchYear) {
+//                match = false;
+//            }
+//        }
+
+
+        if (film == searchFilm) {
+//            filterVectorFilm.push_back(film);
             ui->textBrowser->appendColoredText(QString::number(film.id) + ":     " + QString::fromStdString(film.name) + ";     " + QString::fromStdString(film.genre) + ";     " + QString::number(film.year), film.color);
         }
     }
 }
 
+template <typename T>
+T calculateAverage(const std::vector<T>& numbers) {
+    if (numbers.empty()) {
+        throw std::invalid_argument("Vector is empty, cannot calculate average.");
+    }
+
+    T sum = 0;
+    for (const auto& number : numbers) {
+        sum += number;
+    }
+
+    return sum / static_cast<T>(numbers.size());
+}
+
+void MainWindow::on_pushButton_7_clicked() // Кнопка Lab 8
+{
+
+    std::vector<int> intVector = {1, 2, 3, 4, 5};
+        try {
+            int averageInt = calculateAverage(intVector);
+            std::cout << "Average (int): " << averageInt << std::endl;
+        } catch (const std::invalid_argument& e) {
+            std::cerr << "Error: " << e.what() << std::endl;
+        }
+
+//        std::vector<double> doubleVector = {1.5, 2.5, 3.5, 4.5, 5.5};
+//        try {
+//            double averageDouble = calculateAverage(doubleVector);
+//            std::cout << "Average (double): " << averageDouble << std::endl;
+//        } catch (const std::invalid_argument& e) {
+//            std::cerr << "Error: " << e.what() << std::endl;
+//        }
+
+}
+
 void MainWindow::on_pushButton_2_clicked() // Кнопка Add File
+{
+    QString filter = "CSV Files (*.csv);;JSON Files (*.json);;All Poor Files (*)";
+    QString filterName = "Select your fakin file";
+    QString selectedFilePath = QFileDialog::getOpenFileName(this, filterName, "", filter);
+
+    filterVectorFilm.clear();
+    mainVectorFilm.clear();
+
+    if(selectedFilePath.endsWith(".csv", Qt::CaseInsensitive)){
+        try {
+                CsvReader csv(selectedFilePath.toStdString());
+                if (csv.isOpen()) {
+                    mainVectorFilm = csv.readAll();
+
+                    int lineNumber = 0;
+                    for (const auto& film : mainVectorFilm) {
+                        ++lineNumber;
+//                        if (!std::isdigit(film.year)) {
+//                            throw std::invalid_argument("Invalid year format at line " + std::to_string(lineNumber));
+//                        }
+
+                        if (film.genre != "Action" && film.genre != "Drama" && film.genre != "Comedy") {
+                            throw std::invalid_argument("Invalid genre at line " + std::to_string(lineNumber));
+                        }
+
+                    }
+                }
+            } catch (const std::exception& e) {
+            std::cerr << "Error processing CSV data: " << e.what() << std::endl;
+            }
+    }
+
+    if(selectedFilePath.endsWith(".json", Qt::CaseInsensitive)){
+        JsonReader json(selectedFilePath.toStdString());
+        if (json.isOpen()){
+            mainVectorFilm = json.readAll();
+        }
+    }
+
+    ui->textBrowser->clear();
+
+
+
+        for (auto const& film : mainVectorFilm) {
+               ui->textBrowser->appendColoredText(QString::number(film.id) + ":     " + QString::fromStdString(film.name) + ";     " + QString::fromStdString(film.genre) + ";     " + QString::number(film.year), film.color);
+        }
+}
+
+void MainWindow::on_pushButton_6_clicked() // Кнопка Add Json
 {
     filterVectorFilm.clear();
     mainVectorFilm.clear();
-    CsvReader csv("Films.csv");
-    if (csv.isOpen()){
-        mainVectorFilm = csv.readAll();
+    JsonReader json("Films.json");
+    if (json.isOpen()){
+        mainVectorFilm = json.readAll();
     }
 
     ui->textBrowser->clear();

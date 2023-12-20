@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Film 1",
+        "year": 2022,
+        "genre": "Drama",
+        "color": "#FF0000"
+    },
+    {
+        "id": 2,
+        "name": "Film 2",
+        "year": 2019,
+        "genre": "Comedy",
+        "color": "#FF0000"
+    },
+    {
+        "id": 3,
+        "name": "Film 3",
+        "year": 2020,
+        "genre": "Action",
+        "color": "#FF0000"
+    }
+]

@@ -1,6 +1,6 @@
 #include "csvreader.h"
 
-std::vector<std::string> split_line(const std::string &str, char delim) {
+static std::vector<std::string> split_line(const std::string &str, char delim) {
 
     std::vector<std::string> tokens;
 

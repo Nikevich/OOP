@@ -3,20 +3,7 @@
 #include "fstream"
 #include "vector"
 #include "QColor"
-
-struct Film{
-    int id;
-    std::string name;
-    int year;
-    std::string genre;
-    QColor color;
-};
-
-class AbstractClass{
-public:
-    virtual bool  isOpen() = 0;
-    virtual std::vector<Film> readAll() = 0;
-};
+#include "FilmClass.h"
 
 class CsvReader : public AbstractClass{
 public:
